@@ -6,6 +6,9 @@ public class RandomEx1 {
         // 2개의 주사위를 굴려서 두 개의 주사위 수가 같은 값이 나오면 무인도 탈출하기
         // 탈출 시 두개의 주사위 값을 표시하고, 몇번만에 탈출 했는데 횟수 표시
 
+    System.out.println("");
+
+
         int count = 1;
         while (true) {
             int rand1 = (int)(Math.random() * 6) + 1;
