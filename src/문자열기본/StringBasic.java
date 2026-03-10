@@ -43,7 +43,7 @@ public class StringBasic {
         // split() : 문자열을 특정 문자열로 구분 하는 메서드
         String time = "10:32:34";       // 한 개의 문자열
         String[] timeArr = time.split(":");     // (콜론) 기준으로 여러개의 부문 문자열로 나누어서 배열에 저장
-        System.out.printf("%5시 %5분 %5초", timeArr[0], timeArr[1], timeArr[2]);
+        System.out.printf("%5d시 %5d분 %5d초", timeArr[0], timeArr[1], timeArr[2]);
 
         // 문자열 포매팅 : 문자열 냉에서 특정 값을 삽입하는 방법 : printf() 유사
         int num = 4;
