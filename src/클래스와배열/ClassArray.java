@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ClassArray {
     public static void main(String[] args) {
-        Student[] students = new Student[5];       // Student 클래스 타입의 배열을 5개 생성
+        Student[] students = new Student[5];  // Student 클래스 타입의 배열을 5개 생성
         Scanner sc = new Scanner(System.in);
 
         // 학생 정보 입력
@@ -12,7 +12,7 @@ public class ClassArray {
             System.out.printf("[%d 번째 학생 정보 입력 ]\n", i + 1);
             System.out.print("학번 : ");
             int id = sc.nextInt();
-            sc.nextLine();      // 버퍼 비우기
+            sc.nextLine();  // 버퍼 비우기
             System.out.print("이름 : ");
             String name = sc.nextLine();
             System.out.print("국어 : ");

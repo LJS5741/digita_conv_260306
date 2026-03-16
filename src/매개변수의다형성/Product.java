@@ -18,6 +18,7 @@ class Phone extends Product {
         this.bonusPoint = 20;
     }
 }
+
 class Computer extends Product {
     Computer() {
         this.price = 300;
@@ -28,12 +29,12 @@ class Computer extends Product {
 class Buyer {
     int money = 1000;
     int bonusPoint = 0;
-    void buy(Product product) {  // Product 클래스의  참조 변수 =
+    void buy(Product product) {  // Product 클래스의 참조 변수  =
         money -= product.price;
         bonusPoint += product.bonusPoint;
     }
     void printInfo() {
         System.out.println("잔액 : " + money);
-        System.out.println("포인트 : " + bonusPoint);
+        System.out.println("포인트 " + bonusPoint);
     }
 }

@@ -3,9 +3,9 @@ package 클래스와배열;
 import java.util.Scanner;
 
 public class Student {
-    int studentId;      // 학번
+    int studentId; // 학번
     String name;
-    int[] score = new int[3];       // 국어 영어 수학
+    int[] score = new int[3];  // 국어 영어 수학
     int total;
     double avg;
 
