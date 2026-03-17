@@ -70,6 +70,32 @@ public class Carmain {
                 weatherMod = 1.4;
         }
 
+        System.out.println("G80 에어컨 [1]ON [2]OFF : ");
+        int aircon = sc.nextInt();
+        if (aircon == 1) {
+            System.out.println("G80 : 에어컨 ON");
+        } else {
+            System.out.println("G80 : 에어컨 OFF");
+        }
+
+        System.out.println("G80 오디오 [1]ON [2]OFF : ");
+        int audio = sc.nextInt();
+        if (audio == 1) {
+            System.out.println("G80 : 오디오 ON");
+        } else {
+            System.out.println("G80 : 오디오 OFF");
+        }
+        System.out.println("G80 자율주행 [1]ON [2]OFF : ");
+        int autopilot = sc.nextInt();
+        if (autopilot == 1) {
+            System.out.println("G80 : 자율주행 ON");
+        } else {
+            System.out.println("G80 : 자율주행 OFF");
+        }
+
+
+
+
         // --- 계산 로직 ---
         int NumberOfMoves = (int) Math.ceil((double)passengers/ car.seats);
         int totalDistance = distance * NumberOfMoves;
@@ -87,5 +113,6 @@ public class Carmain {
         System.out.printf("총 비용 : %,d원\n", (int)totalCost);
         System.out.println("총 주유 횟수 : " + refuelCount + "회");
         System.out.println("총 이동 시간 : " + hours + "시간 " + minutes + "분");
+        car.showStatus();
     }
 }

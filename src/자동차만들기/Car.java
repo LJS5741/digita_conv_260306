@@ -14,4 +14,6 @@ public abstract class Car {
     // [추상 메서드] 부가모드 설정 (자식에서 구현)
     public abstract void setMode(boolean isOn);
 
+    public abstract void showStatus();
+
 }
