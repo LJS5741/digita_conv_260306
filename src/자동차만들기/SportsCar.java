@@ -8,7 +8,6 @@ class SportsCar extends Car {
         this.fuelTank = 30;
         this.seats = 2;
     }
-    @Override
     public void setMode(boolean isOn) {
         if (isOn) this.speed *= 1.2; // 터보: 속도 20% 증가
     }
@@ -23,7 +22,6 @@ class Sedan extends Car {
         this.fuelTank = 45;
         this.seats = 4;
     }
-    @Override
     public void setMode(boolean isOn) {
         if (isOn) this.seats += 1; // 트렁크 좌석화: 1석 추가
     }
@@ -38,7 +36,6 @@ class Bus extends Car {
         this.fuelTank = 100;
         this.seats = 20;
     }
-    @Override
     public void setMode(boolean isOn) {
         if (isOn) this.fuelTank += 30; // 보조 탱크: 30L 추가
     }
