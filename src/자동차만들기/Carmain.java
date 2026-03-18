@@ -6,20 +6,29 @@ public class Carmain {
 
     public static final int PRICE = 2000;
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         // 1. 지역 선택
         System.out.print("이동 지역 선택 [1]부산(400km) [2]대전(150km) [3]강릉(200km) [4]광주(300km) : ");
         int locIdx = sc.nextInt();
         int distance = 0;
-        switch(locIdx) {
-            case 1: distance = 400; break;
-            case 2: distance = 150; break;
-            case 3: distance = 200; break;
-            case 4: distance = 300; break;
-            default: System.out.println("지역을 잘못 선택하셨습니다."); return;
+        switch (locIdx) {
+            case 1:
+                distance = 400;
+                break;
+            case 2:
+                distance = 150;
+                break;
+            case 3:
+                distance = 200;
+                break;
+            case 4:
+                distance = 300;
+                break;
+            default:
+                System.out.println("지역을 잘못 선택하셨습니다.");
+                return;
         }
 
         // 2. 승객 수 입력
@@ -34,7 +43,7 @@ public class Carmain {
         System.out.print("이동할 차량 선택 [1]스포츠카 [2]승용차 [3]버스 : ");
         int carType = sc.nextInt();
         Car car = null;
-        switch(carType) {
+        switch (carType) {
             case 1:
                 car = new SportsCar("포르쉐 911");
                 break;
@@ -52,7 +61,7 @@ public class Carmain {
         // 4. 부가기능 및 날씨
         System.out.print("부가기능 [1]ON [2]OFF : ");
         int submode = sc.nextInt();
-        if(submode == 1) {
+        if (submode == 1) {
             car.setMode(true);
         }
 
@@ -70,29 +79,40 @@ public class Carmain {
                 weatherMod = 1.4;
         }
 
-        System.out.println("G80 에어컨 [1]ON [2]OFF : ");
-        int aircon = sc.nextInt();
-        if (aircon == 1) {
-            System.out.println("G80 : 에어컨 ON");
-        } else {
-            System.out.println("G80 : 에어컨 OFF");
+        if (car instanceof Aircon aircon) {
+            System.out.print("G80 에어컨 [1]ON [2]OFF : ");
+            int input = sc.nextInt();
+            if (input == 1) {
+                System.out.println("G80 : 에어컨 ON");
+                aircon.setAircon(true);
+            } else {
+                System.out.println("G80 : 에어컨 OFF");
+                aircon.setAircon(false);
+            }
         }
 
-        System.out.println("G80 오디오 [1]ON [2]OFF : ");
-        int audio = sc.nextInt();
-        if (audio == 1) {
-            System.out.println("G80 : 오디오 ON");
-        } else {
-            System.out.println("G80 : 오디오 OFF");
+        if (car instanceof Audio audio) {
+            System.out.print("G80 오디오 [1]ON [2]OFF : ");
+            int input = sc.nextInt();
+            if (input == 1) {
+                System.out.println("G80 : 오디오 ON");
+                audio.setAudio(true);
+            } else {
+                System.out.println("G80 : 오디오 OFF");
+                audio.setAudio(false);
+            }
         }
-        System.out.println("G80 자율주행 [1]ON [2]OFF : ");
-        int autopilot = sc.nextInt();
-        if (autopilot == 1) {
-            System.out.println("G80 : 자율주행 ON");
-        } else {
-            System.out.println("G80 : 자율주행 OFF");
+        if (car instanceof AutoPilot autoPilot) {
+            System.out.print("G80 자율주행 [1]ON [2]OFF : ");
+            int input = sc.nextInt();
+            if (input == 1) {
+                System.out.println("G80 : 자율주행 ON");
+                autoPilot.setAutoPilot(true);
+            } else {
+                System.out.println("G80 : 자율주행 OFF");
+                autoPilot.setAutoPilot(false);
+            }
         }
-
 
 
 

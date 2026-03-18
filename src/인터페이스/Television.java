@@ -15,6 +15,12 @@ public class Television implements RemoCon {
     }
 
     @Override
+    public void setMute(boolean mute) {
+        if (mute) System.out.println("TV를 무음 처리 합니다.");
+        else System.out.println("TV 무음 해제 합니다.");
+    }
+
+    @Override
     public void setVolume(int volume) {
         if (volume > RemoCon.MIN_VOLUME) {
             this.volume = RemoCon.MAX_VOLUME;
@@ -31,5 +37,7 @@ public class Television implements RemoCon {
         } else {
             System.out.println("채널 설정 벙위가 아닙니다.");
         }
+
+
     }
 }

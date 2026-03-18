@@ -20,20 +20,9 @@ class SportsCar extends Car implements Aircon, Audio {
         this.aircon = on;
         if (on) this.fuelEffi *= 0.95;
     }
-
-    @Override
-    public boolean isAirconOn() {
-        return aircon;
-    }
-
     @Override
     public void setAudio(boolean on) {
         this.audio = on;
-    }
-
-    @Override
-    public boolean isAudioOn() {
-        return audio;
     }
 
     @Override
@@ -66,29 +55,14 @@ class Sedan extends Car implements Aircon, Audio, AutoPilot{
     }
 
     @Override
-    public boolean isAirconOn() {
-        return aircon;
-    }
-
-    @Override
     public void setAudio(boolean on) {
         this.audio = on;
-    }
-
-    @Override
-    public boolean isAudioOn() {
-        return audio;
     }
 
     @Override
     public void setAutoPilot(boolean on) {
         this.autopilot = on;
         if (on) this.speed *= 0.9;
-    }
-
-    @Override
-    public boolean isAutoPilotOn() {
-        return autopilot;
     }
 
     @Override
@@ -121,19 +95,9 @@ class Bus extends Car implements Aircon, AutoPilot {
     }
 
     @Override
-    public boolean isAirconOn() {
-        return aircon;
-    }
-
-    @Override
     public void setAutoPilot(boolean on) {
         this.autopilot= on;
         if (on) this.speed *= 0.9;
-    }
-
-    @Override
-    public boolean isAutoPilotOn() {
-        return autopilot;
     }
 
     @Override
