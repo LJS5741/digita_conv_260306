@@ -1,7 +1,9 @@
 package 오브젝트클래스;
 // Object 클래스 : 모든 클래스의 최상위 부모 클래스
-// toString() : 객체의 문자열로 반환 (클래스명@16진수_해시코드)
-// equals(Object obj) : 두 객체가 같은지 비교, String 클래스에서는 문자열 내용을 비교하도록 오버리이딩이 되어 있음
+// toString() : 객체의 정보를 문자열로 반환 (클래스명@16진수_해시코드)
+// equals(Object obj) : 두객체가 같은지 비교, String 클래스에서는 문자열 내용을 비교하도록 오버라이딩이 되어 있음
+
+
 
 public class ObjectMain {
     public static void main(String[] args) {
@@ -12,8 +14,11 @@ public class ObjectMain {
         }
 
         if(student1.equals(student2)) {
-            System.out.println("참조하고 있는 객체가 같은지 비교");
+            System.out.println("참조하는 있는 객체가 같은지 비교");
         }
+        System.out.println(student1);
+        System.out.println(student1.hashCode());
+        System.out.println(student2.getClass());
     }
 }
 
@@ -24,8 +29,9 @@ class Student extends Object{
         name = "곰돌이";
         age = 20;
     }
-    @Override
-    public String toString() {
-        return "Student [name=" + name +", age=" + age + "]";
-    }
+
+//    @Override
+//    public String toString() {
+//        return "Student [name=" + name + ", age=" + age + "]";
+//    }
 }

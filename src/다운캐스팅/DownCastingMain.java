@@ -1,13 +1,16 @@
 package 다운캐스팅;
+// 다운캐스팅 : 상위 클래스 타입으로 건성된 객텍를 다시 하위 클래스 타입으로 형변환 하는 것
 
 import java.util.ArrayList;
 
-// 다운캐스팅 : 상위 클래스 타입으로 전환된 객체를 다시 하위 클래스 타입으로 형 변환 하는 것
 public class DownCastingMain {
     ArrayList<Animal> animals = new ArrayList<>();
     public static void main(String[] args) {
         DownCastingMain downCasting = new DownCastingMain();
         downCasting.addAnimal();
+
+
+
     }
     public void addAnimal() {
         animals.add(new Animal());
@@ -24,20 +27,22 @@ public class DownCastingMain {
         for (Animal animal : animals) {
             if (animal instanceof Human human) {
                 human.readBook();
-            } else if (animal instanceof  Tiger tiger) {
+            } else if (animal instanceof Tiger tiger) {
                 tiger.hunting();
             } else if (animal instanceof Eagle eagle) {
                 eagle.flying();
-            } else
-                System.out.println("지원하지 않는 형 입니다.");
-
+            } else {
+                System.out.println("지원되지 않는 형 입니다.");
+            }
         }
+
     }
 
 }
+
 class Animal {
     public void move() {
-        System.out.println("동물이 움직입니다.");
+        System.out.println("동물이 움직 입니다.");
     }
 }
 
@@ -47,7 +52,7 @@ class Human extends Animal {
         System.out.println("사람이 두 발로 걷습니다.");
     }
     public void readBook() {
-        System.out.println("사람이 책을 읽습니다.");
+        System.out.println("사람이 책을 일습니다.");
     }
 }
 

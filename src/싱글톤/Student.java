@@ -14,4 +14,5 @@ public class Student {
         System.out.println("이름 : " + singleTon.name);
         System.out.println("아이디 : " + singleTon.id);
     }
+
 }

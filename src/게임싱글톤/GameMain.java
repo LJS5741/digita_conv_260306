@@ -1,12 +1,7 @@
 package 게임싱글톤;
 
-import java.util.Scanner;
-
 public class GameMain {
     public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-
         Player p1 = new Player("곰돌이사육사");
         Player p2 = new Player("달빛사냥꾼");
 
@@ -15,7 +10,6 @@ public class GameMain {
 
         p1.printSettings();
         p2.printSettings();
-
 
         // 동일 인스턴스 여부 확인
         GameSetting s1 = GameSetting.getInstance();

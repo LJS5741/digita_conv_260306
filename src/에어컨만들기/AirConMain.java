@@ -7,11 +7,11 @@ public class AirConMain {
         AirCon myAirCon = new AirCon();
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("에어컨을 켜시겠습니까? (yes / no) : ");
+        System.out.print("예어컨을 켜시겠습니까? (yes / no) : ");
         String onOff = sc.nextLine();
 
         if (onOff.equalsIgnoreCase("yes")) {
-            myAirCon.setPower(true);  // 원래는 게터를 사용하는게 원칙
+            myAirCon.setPower(true); // 원래는 게터를 사용하는게 원칙
             myAirCon.setAirCon(sc);
             myAirCon.operate();
         } else {

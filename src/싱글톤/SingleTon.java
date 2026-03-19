@@ -11,7 +11,7 @@ public class SingleTon {
         id = 100;
     }
     // 클래스 메서드로 해당 메서드 호출 시 싱글톤 주소를 반환
-    static  SingleTon getInstance() {
+    static SingleTon getInstance() {
         return singleTon;
     }
 }

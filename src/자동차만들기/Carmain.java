@@ -2,137 +2,105 @@ package 자동차만들기;
 
 import java.util.Scanner;
 
-public class Carmain {
+import static 자동차만들기.Common.DISTANCE;
 
-    public static final int PRICE = 2000;
-
+public class CarMain {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Car car = null;  // 부모 클래스의 참조 변수
+        int loc = 0, cnt = 0, type = 0, option = 0, weather = 0;
 
-        // 1. 지역 선택
-        System.out.print("이동 지역 선택 [1]부산(400km) [2]대전(150km) [3]강릉(200km) [4]광주(300km) : ");
-        int locIdx = sc.nextInt();
-        int distance = 0;
-        switch (locIdx) {
-            case 1:
-                distance = 400;
-                break;
-            case 2:
-                distance = 150;
-                break;
-            case 3:
-                distance = 200;
-                break;
-            case 4:
-                distance = 300;
-                break;
-            default:
-                System.out.println("지역을 잘못 선택하셨습니다.");
-                return;
+        // 이동 지역
+        while (true) {
+            System.out.print("\n이동 지역 [1]부산 [2]대전 [3]강릉 [4]광주 : ");
+            loc = sc.nextInt();
+            if (loc >= 1 && loc <= 4) break;
+            System.out.println("이동할 지역 선택이 잘못되었습니다.");
+        }
+        // 승객 수
+        while (true) {
+            System.out.print("이동할 승객 수 입력 (1~100): ");
+            cnt = sc.nextInt();
+            if (cnt >= 1 && cnt <= 100) break;
+            System.out.println("승객 수는 1~100명 사이여야 합니다.");
+        }
+        // 차량 선택
+        while (true) {
+            System.out.print("차량 선택 [1]스포츠카 [2]승용차 [3]버스 : ");
+            type = sc.nextInt();
+            if (type >= 1 && type <= 3) break;
+            System.out.println("차량 선택이 잘못되었습니다.");
+        }
+        // 부가 기능
+        while (true) {
+            System.out.print("부가 기능 [1]ON [2]OFF : ");
+            option = sc.nextInt();
+            if (option == 1 || option == 2) break;
+            System.out.println("모드 선택이 잘못되었습니다.");
+        }
+        boolean isMode = (option == 1);
+
+        // 자동차 객체 대입
+        switch (type) {
+            case 1: car = new SportCar("람로르기니"); break;
+            case 2: car = new Sedan("G80"); break;
+            case 3: car = new Bus("리무진 버스"); break;
+            default: System.out.println("없는 차량 입니다.");
         }
 
-        // 2. 승객 수 입력
-        System.out.print("이동할 승객 수 입력 : ");
-        int passengers = sc.nextInt();
-        if (passengers < 1 || passengers > 100) {
-            System.out.println("승객 인원 초과입니다.");
-            return;
+        car.setMode(isMode);
+
+        while (true) {
+            System.out.print("날씨 선택 [1]맑음 [2]비 [3]눈 : ");
+            weather = sc.nextInt();
+            if (weather >= 1 && weather <= 3) break;
+            System.out.println("날씨 선택이 잘못되었습니다.");
         }
 
-        // 3. 차량 선택
-        System.out.print("이동할 차량 선택 [1]스포츠카 [2]승용차 [3]버스 : ");
-        int carType = sc.nextInt();
-        Car car = null;
-        switch (carType) {
-            case 1:
-                car = new SportsCar("포르쉐 911");
-                break;
-            case 2:
-                car = new Sedan("그랜저");
-                break;
-            case 3:
-                car = new Bus("고속버스");
-                break;
-            default:
-                System.out.println("차량을 잘못 선택하셨습니다.");
-                return;
-        }
-
-        // 4. 부가기능 및 날씨
-        System.out.print("부가기능 [1]ON [2]OFF : ");
-        int submode = sc.nextInt();
-        if (submode == 1) {
-            car.setMode(true);
-        }
-
-        System.out.print("날씨 [1]맑음 [2]비 [3]눈 : ");
-        int weather = sc.nextInt();
-        double weatherMod = 0;
-        switch (weather) {
-            case 1:
-                weatherMod = 1.0;
-                break;
-            case 2:
-                weatherMod = 1.2;
-                break;
-            case 3:
-                weatherMod = 1.4;
-        }
-
-        if (car instanceof Aircon aircon) {
-            System.out.print("G80 에어컨 [1]ON [2]OFF : ");
-            int input = sc.nextInt();
-            if (input == 1) {
-                System.out.println("G80 : 에어컨 ON");
-                aircon.setAircon(true);
-            } else {
-                System.out.println("G80 : 에어컨 OFF");
-                aircon.setAircon(false);
+        if (car instanceof AirCon airCon) {
+            int select;
+            while (true) {
+                System.out.print("에어컨 [1]ON [2]OFF : ");
+                select = sc.nextInt();
+                if (select == 1 || select == 2) break;
+                System.out.println("잘못된 입력 입니다.");
             }
+            if (select == 1) airCon.airConOnOff(true);
+            else airCon.airConOnOff(false);
         }
 
         if (car instanceof Audio audio) {
-            System.out.print("G80 오디오 [1]ON [2]OFF : ");
-            int input = sc.nextInt();
-            if (input == 1) {
-                System.out.println("G80 : 오디오 ON");
-                audio.setAudio(true);
-            } else {
-                System.out.println("G80 : 오디오 OFF");
-                audio.setAudio(false);
+            int select;
+            while (true) {
+                System.out.print("오디오 [1]ON [2]OFF : ");
+                select = sc.nextInt();
+                if (select == 1 || select == 2) break;
+                System.out.println("잘못된 입력 입니다.");
             }
-        }
-        if (car instanceof AutoPilot autoPilot) {
-            System.out.print("G80 자율주행 [1]ON [2]OFF : ");
-            int input = sc.nextInt();
-            if (input == 1) {
-                System.out.println("G80 : 자율주행 ON");
-                autoPilot.setAutoPilot(true);
-            } else {
-                System.out.println("G80 : 자율주행 OFF");
-                autoPilot.setAutoPilot(false);
-            }
+            if (select == 1) audio.audioOnOFF(true);
+            else audio.audioOnOFF(false);
         }
 
+        if (car instanceof AutoDrive autoDrive) {
+            int select;
+            while (true) {
+                System.out.print("자율주행 [1]ON [2]OFF : ");
+                select = sc.nextInt();
+                if (select == 1 || select == 2) break;
+                System.out.println("잘못된 입력 입니다.");
+            }
+            if (select == 1) autoDrive.autoOnOff(true);
+            else autoDrive.autoOnOff(false);
+        }
 
+        car.applyOptions(); // 연비와 속도 보정
 
-        // --- 계산 로직 ---
-        int NumberOfMoves = (int) Math.ceil((double)passengers/ car.seats);
-        int totalDistance = distance * NumberOfMoves;
-        double FuelConsumption = (double) totalDistance / car.fuelEffi;
-        int refuelCount = (int) Math.ceil((double)FuelConsumption/car.fuelTank);
-        double totalCost = FuelConsumption*PRICE;
-        double totalTime = ((double)distance/car.speed)*NumberOfMoves*weatherMod;
+        int moveCnt = car.getMovingCnt(cnt);
+        System.out.println("=".repeat(7) + car.getName() + "=".repeat(7));
+        System.out.println("총 비용 : " + car.getTotalCost(DISTANCE[loc], moveCnt) + "원");
+        System.out.println("총 주유 횟수 : " + car.getRefuelCnt(DISTANCE[loc], moveCnt) + "회");
+        System.out.println("총 이동 시간 : " + car.getMovingTime(DISTANCE[loc], moveCnt, weather));
 
-        // 시간 포맷 변환 (소수점 -> 시/분)
-        int hours = (int) totalTime;
-        int minutes = (int) ((totalTime - hours) * 60);
-
-        // 결과 출력
-        System.out.println("\n====== " + car.name + " ======");
-        System.out.printf("총 비용 : %,d원\n", (int)totalCost);
-        System.out.println("총 주유 횟수 : " + refuelCount + "회");
-        System.out.println("총 이동 시간 : " + hours + "시간 " + minutes + "분");
-        car.showStatus();
+        car.printOptions();
     }
 }
